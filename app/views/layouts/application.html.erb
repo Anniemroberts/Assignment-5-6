@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Blog</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+
+    <style>
+
+    html,body{
+    height: 100%
+    }
+    .logo {
+      height: 3em;
+    }
+
+  @media only screen and (min-width : 789px) {
+    ul.nav {
+      float: right;
+    }
+  }
+    .burglyph{
+      float: right;
+      height: 1.5em;
+      position: static;
+      margin-bottom: 0px;
+    }
+    .bottom-bar{
+      font-size: 5em;
+      display: inline-flex;
+      width: 100%;
+      margin-left: 1em;
+      margin-right: 1em;
+    }
+
+    .container {
+      align-items: center;
+    }
+
+
+    .dropdown-menu{
+            display: block;
+            position: static;
+            background-color:transparent;
+            border:0 none;
+            box-shadow:none;
+            margin-top:0;
+            position:static;
+            width:100%;
+    }
+    .bottom-bar {
+      width:100%;
+      bottom:0px;
+    }
+
+    </style>
+  </head>
+
+  <body>
+
+
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <!-- <span class="sr-only">Toggle navigation</span> -->
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Brand</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><form><input type="text" name="search"></form></li>
+        <li><%= link_to 'All Posts', posts_path %></li>
+        <li><%= link_to 'New Post', new_post_path %></li>
+
+        <li><a href="#">Sign Up</a></li>
+        <li><a href="#">Login</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+
+
+<%= yield %>
+
+<row class="bottom-bar">
+  <div class="col-xs-2"><i class="fa fa-envelope-o" aria-hidden="true"></i></div>
+  <div class="col-xs-2"><i class="fa fa-facebook" aria-hidden="true"></i></div>
+  <div class="col-xs-2"><i class="fa fa-instagram" aria-hidden="true"></i></div>
+  <div class="col-xs-2"><i class="fa fa-medium" aria-hidden="true"></i></div>
+  <div class="col-xs-2"><i class="fa fa-twitter" aria-hidden="true"></i></div>
+</row>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<% first_post = @posts.first %>
+
+<%= stylesheet_link_tag "stylesheets/index.scss" %>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-8">
+       <div class="thumbnail">
+        <img src="wild.jpg">
+        <div class="caption">
+          <div class="heartdiv"><a href="#" class="btn btn-default" role="button"><span class="glyphicon glyphicon-heart"></a><h4>456</h4></div>
+            <a href="#" class="btn btn-default bookmark" role="button"><span class="glyphicon glyphicon-bookmark"></a>
+          <h3><%= link_to first_post.title, post_path(first_post) %></h1>
+          <p><%= first_post.body[0..200] %></p>
+          <h6>Username</h6>
+          <h6>Date</h6>
+        </div>
+      </div>
+    </div>
+    <div class="hidden-xs hidden-sm most-liked">
+      <h3>Most Liked</h3>
+      <%8.times do %>
+      <h4><%= Faker::Lorem.words(3).join(" ") %></h4>
+      <% end %>
+    </div>
+  </div>
+
+  <div>
+    <% @posts.offset(1).each do |p| %>
+      <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+        <div class="thumbnail">
+         <img src="wild.jpg">
+         <div class="caption">
+           <div class="heartdiv"><a href="#" class="btn btn-default" role="button"><span class="glyphicon glyphicon-heart"></a><h4>456</h4></div>
+             <a href="#" class="btn btn-default bookmark" role="button"><span class="glyphicon glyphicon-bookmark"></a>
+           <h3><%= link_to p.title, post_path(p) %></h1>
+           <p><%= p.body[0..200] %></p>
+           <h6>Username</h6>
+           <h6>Date</h6>
+         </div>
+       </div>
+      </div>
+    <% end %>
+  </div>
+</div>

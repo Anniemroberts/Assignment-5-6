@@ -1,0 +1,74 @@
+
+  <%= stylesheet_link_tag "stylesheets/show.scss" %>
+
+  <div class="container-fluid">
+  <row>
+    <h1><%= @post.title %></h1>
+     <%=image_tag("wild.jpg") %>
+     <p><%= @post.body %></p>
+      <h6>Date</h6>
+       <div class="heartdiv"><a href="#" class="btn btn-default" role="button"><span class="glyphicon glyphicon-heart"></a><h4>456</h4></div>
+         <a href="#" class="btn btn-default bookmark" role="button"><span class="glyphicon glyphicon-bookmark"></a>
+       <h6>Category: <%= @post.category_name %></h6>
+       <%= link_to 'Edit', edit_post_path(@post) %>
+       <%= link_to 'Delete', post_path(@post),
+                             method: :delete,
+                             data: {confirm: 'Are you sure?'} %>
+    </row>
+     <row>
+       <div class="col-xs-3">
+         <%=image_tag("shiba.jpg") %>
+      </div>
+      <div class="col-xs-9 user">
+        <h2>Username</h2>
+        <p><%= Faker::Lorem.paragraph %></p>
+     </div>
+   </row>
+
+   <hr>
+      <row>
+
+        <form class="col-xs-12">
+        <h3>Leave a comment...</h3>
+
+        <%= @comment.errors.full_messages.join(', ') %>
+        <%= form_for [@post, @comment] do |c| %>
+        <div>
+          <%= c.text_area :body %>
+        </div>
+        <div>
+          <h3>Full Name</h3>
+          <%= c.text_area :name %>
+        </div>
+        <%= c.submit %>
+        <% end %>
+      </form>
+    </row>
+      <hr>
+      <% @post.comments.order(created_at: :desc).each do |comment| %>
+      <row>
+        <div class="comment col-xs-12">
+            <%=image_tag("shiba.jpg") %>
+          <div>
+           <h6><%= comment.name %></h6>
+           <p><%= comment.body %></p>
+         </div>
+         <%= link_to 'delete', review_path(review),
+                                 method: :delete,
+                                 data: { confirm: 'Are you sure?'} %>
+        </div>
+      </row>
+      <% end %>
+
+      <% 3.times do %>
+      <row>
+      <div class="comment col-xs-12">
+          <%=image_tag("shiba.jpg") %>
+        <div>
+         <h6>Username</h6>
+         <p><%= Faker::Lorem.paragraph %></p>
+       </div>
+      </div>
+    </row>
+      <% end %>
+  </div>

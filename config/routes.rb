@@ -1,18 +1,28 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-
+  root 'posts#index'
   get '/' => 'posts#index'
   get '/blog/index' => 'blog#index'
 
 
-  # shallow: true option makes it so nested routes only include '/questions/:question_id'
-  # for the create action and not for `destroy` for instance. This is because
-  # when deleting a nested resouces you may not need to know about the parent
-  # resource because you can get it from the Database. In our case, we can
-  # get the question_id of an answer from the databse
-
   resources :posts, shallow: true do
-    resources :comments, only: [:create, :destroy]
+    resources :comments
+  end
+
+   resources :users, only: [:new, :create, :edit, :update]
+  # resource :resetpass, only: [:edit] do
+  # collection do
+  #   patch 'update_password', :action => :update_password
+  #   end
+  # end
+  resources :resetpass, only: [:edit] do
+    collection do
+      patch :update_password
+    end
+  end
+  
+  resources :sessions, only: [:new, :create, :destroy] do
+     delete :destroy, on: :collection
   end
 
 end

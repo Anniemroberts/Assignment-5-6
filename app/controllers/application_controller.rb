@@ -1,5 +1,10 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+  # before_action :authorize
+  #
+  # def authorize
+  #   head :unauthorized unless current_user.is_admin?
+  # end
 
   def authenticate_user!
     redirect_to new_session_path, alert: 'please sign in' unless user_signed_in?

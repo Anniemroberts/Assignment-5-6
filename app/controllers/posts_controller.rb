@@ -32,7 +32,7 @@ end
 
 def edit
   #@post = Post.find params[:id]
-  if current_user != @question.user
+  if current_user != @post.user
   redirect_to root_path, alert: 'Not authorized'
   end
 end

@@ -1,6 +1,8 @@
-<% first_post = @posts.first %>
 
 <%= stylesheet_link_tag "stylesheets/index.scss" %>
+
+<% firstpost = @posts.first %>
+
 
 <div class="container-fluid">
   <div class="row">
@@ -8,9 +10,9 @@
        <div class="thumbnail">
         <img src="wild.jpg">
         <div class="caption">
-          <div class="heartdiv"><a href="#" class="btn btn-default" role="button"><span class="glyphicon glyphicon-heart"></a><h4>456</h4></div>
-            <a href="#" class="btn btn-default bookmark" role="button"><span class="glyphicon glyphicon-bookmark"></a>
-          <h3><%= link_to first_post.title, post_path(first_post) %></h1>
+          <div class="heartdiv"><a href="/" class="btn btn-default" role="button"><span class="glyphicon glyphicon-heart"></a><h4>456</h4></div>
+            <a href="/" class="btn btn-default bookmark" role="button"><span class="glyphicon glyphicon-bookmark"></a>
+          <h3><%= link_to firstpost.title, post_path(firstpost) %></h1>
           <p><%= first_post.body[0..200] %></p>
           <h6>Username</h6>
           <h6>Date</h6>

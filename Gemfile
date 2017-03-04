@@ -34,6 +34,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
 gem 'cancancan'
 gem 'font-awesome-sass', '~> 4.7.0'
+gem 'faker', '~> 1.7.3'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -47,7 +48,6 @@ group :development do
   gem 'awesome_print'
   gem 'interactive_editor'
   gem 'hirb'
-  gem 'faker', '~> 1.7.3'
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '~> 3.0.5'

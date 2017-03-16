@@ -19,6 +19,14 @@ class Ability
         # the operation is 'manage' in this case.
         p.user == user
       end
+
+      cannot :like, Post do |r|
+        user == r.user
+      end
+
+      can :like, Post do |r|
+        user != r.user
+      end
       # Define abilities for the passed in user here. For example:
       #
       #   user ||= User.new # guest user (not logged in)

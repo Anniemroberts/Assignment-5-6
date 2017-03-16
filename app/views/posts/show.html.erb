@@ -10,12 +10,20 @@
        <div class="heartdiv"><a href="#" class="btn btn-default" role="button"><span class="glyphicon glyphicon-heart"></a><h4>456</h4></div>
          <a href="#" class="btn btn-default bookmark" role="button"><span class="glyphicon glyphicon-bookmark"></a>
        <h6>Category: <%= @post.category_name %></h6>
+       (<%= pluralize @post.likers.count, 'like' %>)
        <% if can?(:manage, @post) %>
        <%= link_to 'Edit', edit_post_path(@post) %>
        <%= link_to 'Delete', post_path(@post),
                              method: :delete,
                              data: { confirm: 'Are you sure?' } %>
        <% end %>
+       <% if user_signed_in? && can?(:like, @post) %>
+        <% if @post.liked_by?(current_user) %>
+          <%= link_to "Un-Like", like_path(@post.like_for(current_user)), method: :delete %>
+        <% else %>
+          <%= link_to "Like", post_likes_path(@post), method: :post %>
+        <% end %>
+      <% end %>
     </row>
      <row>
        <div class="col-xs-3">

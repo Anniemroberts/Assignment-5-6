@@ -35,6 +35,9 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'cancancan'
 gem 'font-awesome-sass', '~> 4.7.0'
 gem 'faker', '~> 1.7.3'
+gem 'delayed_job_active_record'
+gem 'delayed_job_web'
+gem 'sinatra', '2.0.0.beta2'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -45,6 +48,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'letter_opener'
   gem 'awesome_print'
   gem 'interactive_editor'
   gem 'hirb'

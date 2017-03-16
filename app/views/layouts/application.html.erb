@@ -79,9 +79,11 @@
         <li><%= link_to 'All Posts', posts_path %></li>
         <li><%= link_to 'New Post', new_post_path %></li>
         <% if user_signed_in? %>
+          <li><%= link_to 'My Likes', user_likes_path(current_user) %></li>
           <li><%= link_to "#{current_user.full_name }", edit_user_path(current_user)%></li>
           <li><%= link_to 'Sign Out', sessions_path,
                             method: :delete %></li>
+
         <% else %>
         <li><%= link_to 'Sign Up', new_user_path %></li>
         <li><%= link_to 'Sign In', new_session_path %></li>
